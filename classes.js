@@ -65,7 +65,8 @@ export class LinkedList {
             if (node.nextNode === null) {
                 return undefined
             }
-            return getValueAtIndex(node.nextNode, curIndex++)
+
+            return getValueAtIndex(node.nextNode, curIndex += 1)
         }
     }
 
