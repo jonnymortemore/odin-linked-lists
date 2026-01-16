@@ -19,3 +19,5 @@ list.pop();
 console.log(list.toString());
 console.log(list.contains("dog"));
 console.log(list.contains("banana"));
+console.log(list.findIndex("banana"));
+console.log(list.findIndex("snake"));
