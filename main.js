@@ -21,3 +21,6 @@ console.log(list.contains("dog"));
 console.log(list.contains("banana"));
 console.log(list.findIndex("banana"));
 console.log(list.findIndex("snake"));
+
+list.removeAt(0);
+console.log(list.toString());

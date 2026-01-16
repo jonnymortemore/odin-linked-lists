@@ -118,10 +118,49 @@ export class LinkedList {
             return getNodeStr(node.nextNode, currentNodeString);
         }
     }
+
+    //EXTRA CREDIT
+    insertAt(index, ...values) {
+
+    }
+
+    removeAt(index) {
+        //remove node at index
+
+        //if index too low throw error
+        if (index < 0) {
+            throw new RangeError("index must be 0 or above");
+        }
+
+        //if the index is 0 then replace this.headNode with it's nextNode
+        if (index === 0) {
+            this.headNode = this.headNode.nextNode
+            return
+        }
+        
+        //else recursively loop through each node
+        removeNodeAtIndex(this.headNode, 0)
+
+        function removeNodeAtIndex(node, curIndex) {
+            //if reached a node that's null then no index has been found, throw error
+            if (node === null) {
+                throw new RangeError("index is too large")
+            }
+            //find the index before the one you want to remove, and then link it with the next node in the chain (if end of chain this will be null)
+            if (curIndex === index - 1) {
+                //remove the child of this node
+                node.nextNode = node.nextNode.nextNode
+                return
+            }
+            curIndex += 1
+            removeNodeAtIndex(node.nextNode, curIndex)
+        }
+    }
 }
 
 class Node {
     constructor(value = null, nextNode = null) {
-        (this.value = value), (this.nextNode = nextNode);
+        this.value = value;
+        this.nextNode = nextNode;
     }
 }
