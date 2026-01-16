@@ -72,10 +72,12 @@ export class LinkedList {
 
     pop() {
         //remove the head node from the list and return it's value. Undefined on empty. 
+        const poppedValue = this.headNode.value
+        this.headNode = this.headNode.nextNode
     }
 
     contains(value) {
-        //return true if passwed value is in list
+        //return true if passed value is in list
     }
 
     findIndex(value) {
