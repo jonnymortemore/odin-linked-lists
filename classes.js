@@ -92,16 +92,17 @@ export class LinkedList {
 
     findIndex(value) {
         //return the index of the node with the given value. Return -1 if none.
-        return getIndexFromNode(this.headNode, 0)
+        return getIndexFromNode(this.headNode, 0);
+        
         function getIndexFromNode(node, index) {
             if (node.value === value) {
-                return index
+                return index;
             }
             if (node.value !== value && node.nextNode === null) {
-                return -1
+                return -1;
             }
-            index += 1
-            return  getIndexFromNode(node.nextNode, index)
+            index += 1;
+            return getIndexFromNode(node.nextNode, index);
         }
     }
 
@@ -130,39 +131,37 @@ export class LinkedList {
             // if index is 0 then create a new headNode before loop through remaing values
             const endChainNode = this.headNode;
             const valuesArr = [...values];
-            this.headNode = new Node(valuesArr.shift())
-            insertionTool(this.headNode, endChainNode, valuesArr)
-            return
+            this.headNode = new Node(valuesArr.shift());
+            insertionTool(this.headNode, endChainNode, valuesArr);
+            return;
         }
 
-        insertAtNode(this.headNode, 0)
+        insertAtNode(this.headNode, 0);
 
         function insertAtNode(node, curIndex) {
             if (node === null) {
-                throw new RangeError("index is too large")
+                throw new RangeError("index is too large");
             }
             if (curIndex === index - 1) {
                 const endChainNode = node.nextNode;
-                insertionTool(node, endChainNode, [...values])
-                return
+                insertionTool(node, endChainNode, [...values]);
+                return;
             }
-            curIndex += 1
-            insertAtNode(node.nextNode, curIndex)
+            curIndex += 1;
+            insertAtNode(node.nextNode, curIndex);
         }
 
         function insertionTool(startingNode, endChainNode, values) {
-            const newNode = new Node(values.shift())
-            startingNode.nextNode = newNode
+            const newNode = new Node(values.shift());
+            startingNode.nextNode = newNode;
 
             if (values.length === 0) {
-                newNode.nextNode = endChainNode
-                return
+                newNode.nextNode = endChainNode;
+                return;
             }
-            
-            insertionTool(newNode, endChainNode, values)
+
+            insertionTool(newNode, endChainNode, values);
         }
-
-
     }
 
     removeAt(index) {
@@ -175,26 +174,26 @@ export class LinkedList {
 
         //if the index is 0 then replace this.headNode with it's nextNode
         if (index === 0) {
-            this.headNode = this.headNode.nextNode
-            return
+            this.headNode = this.headNode.nextNode;
+            return;
         }
-        
+
         //else recursively loop through each node
-        removeNodeAtIndex(this.headNode, 0)
+        removeNodeAtIndex(this.headNode, 0);
 
         function removeNodeAtIndex(node, curIndex) {
             //if reached a node that's null then no index has been found, throw error
             if (node === null) {
-                throw new RangeError("index is too large")
+                throw new RangeError("index is too large");
             }
             //find the index before the one you want to remove, and then link it with the next node in the chain (if end of chain this will be null)
             if (curIndex === index - 1) {
                 //remove the child of this node
-                node.nextNode = node.nextNode.nextNode
-                return
+                node.nextNode = node.nextNode.nextNode;
+                return;
             }
-            curIndex += 1
-            removeNodeAtIndex(node.nextNode, curIndex)
+            curIndex += 1;
+            removeNodeAtIndex(node.nextNode, curIndex);
         }
     }
 }
