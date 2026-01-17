@@ -121,6 +121,47 @@ export class LinkedList {
 
     //EXTRA CREDIT
     insertAt(index, ...values) {
+        //if index too low throw error
+        if (index < 0) {
+            throw new RangeError("index must be 0 or above");
+        }
+
+        if (index === 0) {
+            // if index is 0 then create a new headNode before loop through remaing values
+            const endChainNode = this.headNode;
+            const valuesArr = [...values];
+            this.headNode = new Node(valuesArr.shift())
+            insertionTool(this.headNode, endChainNode, valuesArr)
+            return
+        }
+
+        insertAtNode(this.headNode, 0)
+
+        function insertAtNode(node, curIndex) {
+            if (node === null) {
+                throw new RangeError("index is too large")
+            }
+            if (curIndex === index - 1) {
+                const endChainNode = node.nextNode;
+                insertionTool(node, endChainNode, [...values])
+                return
+            }
+            curIndex += 1
+            insertAtNode(node.nextNode, curIndex)
+        }
+
+        function insertionTool(startingNode, endChainNode, values) {
+            const newNode = new Node(values.shift())
+            startingNode.nextNode = newNode
+
+            if (values.length === 0) {
+                newNode.nextNode = endChainNode
+                return
+            }
+            
+            insertionTool(newNode, endChainNode, values)
+        }
+
 
     }
 

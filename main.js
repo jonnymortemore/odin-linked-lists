@@ -24,3 +24,5 @@ console.log(list.findIndex("snake"));
 
 list.removeAt(0);
 console.log(list.toString());
+list.insertAt(0, "banana", "cheese")
+console.log(list.toString());
