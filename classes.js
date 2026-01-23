@@ -73,8 +73,13 @@ export class LinkedList {
 
     pop() {
         //remove the head node from the list and return it's value. Undefined on empty.
+        if (this.headNode === null) {
+            return undefined
+        }
+        
         const poppedValue = this.headNode.value;
         this.headNode = this.headNode.nextNode;
+        return poppedValue;
     }
 
     contains(value) {
